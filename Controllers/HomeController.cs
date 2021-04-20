@@ -17,7 +17,8 @@ namespace SiteTeste.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Aplicativo para Hotelaria 2021.";
+            ViewData["email"] = "seu email aqui pessoa.";
 
             return View();
         }
