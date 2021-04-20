@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SiteTeste.Models;
+using SiteTeste.Data;
 
 namespace SiteTeste
 {
@@ -38,14 +39,17 @@ namespace SiteTeste
 
             services.AddDbContext<SiteTesteContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("SiteTesteContext"), builder =>builder.MigrationsAssembly("SiteTeste")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {
