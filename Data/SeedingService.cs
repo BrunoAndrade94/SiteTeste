@@ -25,10 +25,10 @@ namespace SiteTeste.Data
 
         public void Seed()
         {
-            //if(TemDados())
-            //{
-            //    return; // BD já está polulado
-            //}
+            if (TemDados())
+            {
+                return; // BD já está polulado
+            }
 
             Department d1 = new Department(1, "Computers");
             Department d2 = new Department(2, "Electronics");
@@ -83,8 +83,6 @@ namespace SiteTeste.Data
                 r11, r12, r13, r14, r15, r16, r17, r18, r19, r20,
                 r21, r22, r23, r24, r25, r26, r27, r28, r29, r30
             );
-
-
 
             _context.SaveChanges(); // esta com excessao
         }
